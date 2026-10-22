@@ -1,0 +1,367 @@
+<div class="rgn-page" id="rg-nba-roster-continuity">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&display=swap');
+#rg-nba-roster-continuity {
+  --rgn-dark:#071824; --rgn-soft:#f3f8fe; --rgn-line:#d5e7f7; --rgn-line-2:#aacfe9;
+  --rgn-primary:#0b78c8; --rgn-primary-2:#30a7ff; --rgn-primary-dark:#064f8f;
+  --rgn-low:#e0662b; --rgn-low-2:#f59a5f;
+  --rgn-text:#17212b; --rgn-muted:#5f6f7b;
+  --rgn-display:'Barlow Condensed','Arial Narrow',Impact,Arial,sans-serif;
+  --rgn-serif:Georgia,'Times New Roman',serif;
+  width:100%; max-width:960px; margin:0 auto; padding:0; color:var(--rgn-text); background:#fff;
+  font-family:var(--rgn-serif); line-height:1.55; -webkit-font-smoothing:antialiased;
+}
+#rg-nba-roster-continuity * { box-sizing:border-box; }
+#rg-nba-roster-continuity button { font:inherit; }
+#rg-nba-roster-continuity button:focus-visible, #rg-nba-roster-continuity input:focus-visible { outline:3px solid var(--rgn-primary-2); outline-offset:2px; }
+
+#rg-nba-roster-continuity .rgn-hero {
+  position:relative; overflow:hidden; color:#fff; padding:24px 22px 26px; border-bottom:6px solid var(--rgn-primary);
+  background: radial-gradient(circle at 92% 8%, rgba(11,120,200,.28), transparent 32%),
+              radial-gradient(circle at 10% 100%, rgba(11,120,200,.20), transparent 34%),
+              linear-gradient(135deg,#071824 0%,#0a2332 58%,#064f8f 100%);
+}
+#rg-nba-roster-continuity .rgn-kicker { display:inline-flex; margin:0 0 12px; padding:7px 11px; background:var(--rgn-primary); color:#fff; font-family:var(--rgn-display); font-size:12px; font-weight:900; letter-spacing:.11em; text-transform:uppercase; }
+#rg-nba-roster-continuity .rgn-hero h2 { margin:0; color:#fff; font-family:var(--rgn-display); font-weight:900; font-size:clamp(28px,5.6vw,46px); line-height:1.02; }
+#rg-nba-roster-continuity .rgn-hero p { max-width:720px; margin:10px 0 0; color:#eef7ff; font-size:clamp(14px,1.8vw,16px); }
+
+#rg-nba-roster-continuity .rgn-download-row { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 22px; flex-wrap:wrap; background:var(--rgn-soft); border-bottom:1px solid var(--rgn-line); }
+#rg-nba-roster-continuity .rgn-tools { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+#rg-nba-roster-continuity .rgn-btn { appearance:none; border:1px solid rgba(0,0,0,.08); background:var(--rgn-primary); color:#fff; cursor:pointer; padding:10px 14px; font-family:var(--rgn-display); font-size:13px; font-weight:900; letter-spacing:.06em; text-transform:uppercase; }
+#rg-nba-roster-continuity .rgn-btn:hover { background:var(--rgn-primary-dark); }
+#rg-nba-roster-continuity .rgn-btn.dark { background:#071824; border-color:#071824; }
+#rg-nba-roster-continuity .rgn-btn.dark:hover { background:#102b3c; }
+#rg-nba-roster-continuity .rgn-note { color:var(--rgn-muted); font-size:12px; font-weight:700; }
+
+#rg-nba-roster-continuity .rgn-tab-shell { border:1px solid var(--rgn-line); border-top:none; background:#fff; }
+#rg-nba-roster-continuity .rgn-tab-nav { display:flex; align-items:center; gap:8px; padding:12px 22px; background:linear-gradient(180deg,#f7fbff 0%,#edf7ff 100%); border-bottom:1px solid var(--rgn-line); overflow-x:auto; }
+#rg-nba-roster-continuity .rgn-tab-btn { appearance:none; border:1px solid var(--rgn-line-2); background:#fff; color:var(--rgn-primary-dark); cursor:pointer; padding:10px 13px; font-family:var(--rgn-display); font-size:13px; font-weight:900; letter-spacing:.07em; text-transform:uppercase; white-space:nowrap; transition:background .18s ease; }
+#rg-nba-roster-continuity .rgn-tab-btn:hover { background:#e7f3ff; }
+#rg-nba-roster-continuity .rgn-tab-btn.is-active { background:linear-gradient(135deg,#071824,#0b78c8); color:#fff; border-color:#0b78c8; }
+#rg-nba-roster-continuity .rgn-tab-panels { padding:16px 22px 20px; }
+#rg-nba-roster-continuity .rgn-tab-panel { display:none; }
+#rg-nba-roster-continuity .rgn-tab-panel.is-active { display:block; }
+
+#rg-nba-roster-continuity .rgn-metric-row { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:0 0 14px; }
+#rg-nba-roster-continuity .rgn-metric-label { font-family:var(--rgn-display); font-size:12.5px; font-weight:900; letter-spacing:.06em; text-transform:uppercase; color:var(--rgn-muted); margin-right:2px; }
+#rg-nba-roster-continuity .rgn-pill { appearance:none; border:1px solid var(--rgn-line-2); background:#fff; color:var(--rgn-primary-dark); cursor:pointer; padding:7px 12px; border-radius:999px; font-family:var(--rgn-display); font-size:13px; font-weight:800; letter-spacing:.04em; }
+#rg-nba-roster-continuity .rgn-pill:hover { background:#e7f3ff; }
+#rg-nba-roster-continuity .rgn-pill.is-active { background:#071824; color:#fff; border-color:#071824; }
+#rg-nba-roster-continuity .rgn-legend { display:flex; gap:14px; flex-wrap:wrap; margin:0 0 14px; font-size:12.5px; color:var(--rgn-muted); }
+#rg-nba-roster-continuity .rgn-legend span::before { content:""; display:inline-block; width:12px; height:12px; margin-right:6px; vertical-align:-1px; background:var(--rgn-primary); }
+#rg-nba-roster-continuity .rgn-legend .lo::before { background:var(--rgn-low); }
+#rg-nba-roster-continuity .rgn-legend .hi::before { background:var(--rgn-dark); }
+
+#rg-nba-roster-continuity .rgn-bar-chart { display:grid; gap:7px; }
+#rg-nba-roster-continuity .rgn-bar-row { display:grid; grid-template-columns:34px minmax(150px,230px) 1fr 58px; gap:10px; align-items:center; }
+#rg-nba-roster-continuity .rgn-rank-pill { display:flex; align-items:center; justify-content:center; width:32px; height:28px; background:#071824; color:#fff; font-family:var(--rgn-display); font-size:14px; font-weight:900; }
+#rg-nba-roster-continuity .rgn-name-label strong { display:block; font-family:var(--rgn-display); font-size:15.5px; letter-spacing:.02em; text-transform:uppercase; color:var(--rgn-primary-dark); font-weight:900; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+#rg-nba-roster-continuity .rgn-track { height:22px; background:#e7f3fa; overflow:hidden; box-shadow:inset 0 0 0 1px rgba(11,120,200,.12); }
+#rg-nba-roster-continuity .rgn-fill { display:block; height:100%; background:linear-gradient(90deg,var(--rgn-primary),var(--rgn-primary-2)); transition:width 1200ms cubic-bezier(.16,.84,.24,1); }
+#rg-nba-roster-continuity .rgn-bar-row.is-high .rgn-fill { background:linear-gradient(90deg,#071824,#064f8f); }
+#rg-nba-roster-continuity .rgn-bar-row.is-low .rgn-fill { background:linear-gradient(90deg,var(--rgn-low),var(--rgn-low-2)); }
+#rg-nba-roster-continuity .rgn-bar-row.is-low .rgn-rank-pill { background:var(--rgn-low); }
+#rg-nba-roster-continuity .rgn-score { text-align:right; font-family:var(--rgn-display); font-size:19px; font-weight:900; color:#071824; }
+
+#rg-nba-roster-continuity .rgn-table-tools { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:0 0 14px; flex-wrap:wrap; }
+#rg-nba-roster-continuity .rgn-search { width:100%; max-width:280px; padding:10px 11px; border:1px solid var(--rgn-line-2); background:#fff; color:#071824; font-family:var(--rgn-serif); font-size:14px; }
+#rg-nba-roster-continuity .rgn-table-count { font-family:var(--rgn-display); font-size:12.5px; font-weight:900; color:#6b7280; letter-spacing:.06em; text-transform:uppercase; }
+#rg-nba-roster-continuity .rgn-table-wrap { overflow-x:auto; }
+#rg-nba-roster-continuity table { border-collapse:collapse; width:100%; background:#fff; min-width:640px; }
+#rg-nba-roster-continuity .rgn-data-table th { padding:11px 10px; background:linear-gradient(135deg,#071824,#0b3150); color:#fff; font-family:var(--rgn-display); font-size:11.5px; letter-spacing:.07em; text-transform:uppercase; text-align:right; cursor:pointer; white-space:nowrap; }
+#rg-nba-roster-continuity .rgn-data-table th:nth-child(1), #rg-nba-roster-continuity .rgn-data-table th:nth-child(2) { text-align:left; }
+#rg-nba-roster-continuity .rgn-data-table th:hover { background:#123044; }
+#rg-nba-roster-continuity .rgn-data-table th[data-dir="asc"]::after { content:" \25B2"; font-size:9px; }
+#rg-nba-roster-continuity .rgn-data-table th[data-dir="desc"]::after { content:" \25BC"; font-size:9px; }
+#rg-nba-roster-continuity .rgn-data-table td { padding:10px 10px; border-top:1px solid var(--rgn-line); font-size:13.5px; color:#1f2937; text-align:right; }
+#rg-nba-roster-continuity .rgn-data-table td:nth-child(1), #rg-nba-roster-continuity .rgn-data-table td:nth-child(2) { text-align:left; }
+#rg-nba-roster-continuity .rgn-rank-cell { font-family:var(--rgn-display); font-weight:900; color:var(--rgn-primary-dark); }
+#rg-nba-roster-continuity .rgn-team-cell { font-weight:700; white-space:nowrap; }
+#rg-nba-roster-continuity .rgn-pct-cell { font-weight:900; color:#071824; }
+#rg-nba-roster-continuity .rgn-data-table tbody tr:hover td { box-shadow:inset 0 0 0 100px rgba(7,24,36,.04); }
+
+#rg-nba-roster-continuity .rgn-source { margin:0; padding:14px 22px; background:var(--rgn-soft); border-top:4px solid var(--rgn-primary); color:#667382; font-size:12.5px; line-height:1.5; }
+#rg-nba-roster-continuity .rgn-source strong { color:#27343d; }
+
+@media (max-width:640px) {
+  #rg-nba-roster-continuity .rgn-bar-row { grid-template-columns:28px 1fr 50px; grid-template-areas:"rank name score" "fill fill fill"; row-gap:5px; }
+  #rg-nba-roster-continuity .rgn-rank-pill { grid-area:rank; width:26px; }
+  #rg-nba-roster-continuity .rgn-name-label { grid-area:name; }
+  #rg-nba-roster-continuity .rgn-score { grid-area:score; }
+  #rg-nba-roster-continuity .rgn-track { grid-area:fill; }
+}
+@media (prefers-reduced-motion:reduce) { #rg-nba-roster-continuity .rgn-fill { transition:none; } }
+</style>
+
+<div id="rgn-visual">
+  <section class="rgn-hero">
+    <div class="rgn-kicker">RotoGrinders / NBA roster continuity</div>
+    <h2>Which NBA Rosters Changed the Most?</h2>
+    <p>How much of last season's minutes, points, starts and win shares is still on the roster after the Oct. 19 deadline. The Spurs return 96.2%. The Lakers return 42.5%.</p>
+  </section>
+
+  <div class="rgn-download-row">
+    <div class="rgn-tools">
+      <button class="rgn-btn dark" data-rgn-download="rgn-visual" type="button">Download image</button>
+      <button class="rgn-btn" data-rgn-csv="rgn-table" data-filename="rotogrinders-nba-roster-continuity.csv" type="button">Download CSV</button>
+    </div>
+    <span class="rgn-note">All 30 teams, 2025-26 to 2026-27</span>
+  </div>
+
+  <div class="rgn-tab-shell">
+    <div class="rgn-tab-nav">
+      <button class="rgn-tab-btn is-active" data-rgn-tab-target="chart" type="button">Bar chart</button>
+      <button class="rgn-tab-btn" data-rgn-tab-target="table" type="button">Full table</button>
+    </div>
+    <div class="rgn-tab-panels">
+
+      <div class="rgn-tab-panel is-active" data-rgn-tab-panel="chart">
+        <div class="rgn-metric-row" role="group" aria-label="Choose a measure">
+          <span class="rgn-metric-label">Rank by</span>
+          <button class="rgn-pill is-active" data-rgn-metric="cs" type="button">Roster continuity</button>
+          <button class="rgn-pill" data-rgn-metric="mp" type="button">Minutes</button>
+          <button class="rgn-pill" data-rgn-metric="pts" type="button">Points</button>
+          <button class="rgn-pill" data-rgn-metric="gs" type="button">Starts</button>
+          <button class="rgn-pill" data-rgn-metric="ws" type="button">Win shares</button>
+        </div>
+        <div class="rgn-legend"><span class="hi">80% or more returning</span><span>60% to 79.9%</span><span class="lo">Under 60%</span></div>
+        <div class="rgn-bar-chart" id="rgn-bars">
+          <div class="rgn-bar-row is-high" data-team="San Antonio Spurs" data-rank="1" data-mp="93.8" data-pts="96.0" data-gs="99.5" data-ws="95.7" data-cs="96.2"><div class="rgn-rank-pill">1</div><div class="rgn-name-label"><strong>San Antonio Spurs</strong></div><div class="rgn-track"><span class="rgn-fill" style="width:96.2%" data-rgn-target="96.2"></span></div><div class="rgn-score">96.2%</div></div>
+          <div class="rgn-bar-row is-high" data-team="Orlando Magic" data-rank="2" data-mp="90.4" data-pts="92.6" data-gs="97.8" data-ws="92.2" data-cs="93.3"><div class="rgn-rank-pill">2</div><div class="rgn-name-label"><strong>Orlando Magic</strong></div><div class="rgn-track"><span class="rgn-fill" style="width:93.3%" data-rgn-target="93.3"></span></div><div class="rgn-score">93.3%</div></div>
+          <div class="rgn-bar-row is-high" data-team="New Orleans Pelicans" data-rank="3" data-mp="84.6" data-pts="89.6" data-gs="96.6" data-ws="93.8" data-cs="91.1"><div class="rgn-rank-pill">3</div><div class="rgn-name-label"><strong>New Orleans Pelicans</strong></div><div class="rgn-track"><span class="rgn-fill" style="width:91.1%" data-rgn-target="91.1"></span></div><div class="rgn-score">91.1%</div></div>
+          <div class="rgn-bar-row is-high" data-team="New York Knicks" data-rank="4" data-mp="88.5" data-pts="93.4" data-gs="94.9" data-ws="86.0" data-cs="90.7"><div class="rgn-rank-pill">4</div><div class="rgn-name-label"><strong>New York Knicks</strong></div><div class="rgn-track"><span class="rgn-fill" style="width:90.7%" data-rgn-target="90.7"></span></div><div class="rgn-score">90.7%</div></div>
+          <div class="rgn-bar-row is-high" data-team="Houston Rockets" data-rank="5" data-mp="84.1" data-pts="90.1" data-gs="91.7" data-ws="90.3" data-cs="89.1"><div class="rgn-rank-pill">5</div><div class="rgn-name-label"><strong>Houston Rockets</strong></div><div class="rgn-track"><span class="rgn-fill" style="width:89.1%" data-rgn-target="89.1"></span></div><div class="rgn-score">89.1%</div></div>
+          <div class="rgn-bar-row is-high" data-team="Golden State Warriors" data-rank="6" data-mp="77.2" data-pts="79.2" data-gs="83.4" data-ws="83.7" data-cs="80.9"><div class="rgn-rank-pill">6</div><div class="rgn-name-label"><strong>Golden State Warriors</strong></div><div class="rgn-track"><span class="rgn-fill" style="width:80.9%" data-rgn-target="80.9"></span></div><div class="rgn-score">80.9%</div></div>
+          <div class="rgn-bar-row " data-team="Portland Trail Blazers" data-rank="7" data-mp="70.6" data-pts="73.9" data-gs="86.8" data-ws="78.5" data-cs="77.4"><div class="rgn-rank-pill">7</div><div class="rgn-name-label"><strong>Portland Trail Blazers</strong></div><div class="rgn-track"><span class="rgn-fill" style="width:77.4%" data-rgn-target="77.4"></span></div><div class="rgn-score">77.4%</div></div>
+          <div class="rgn-bar-row " data-team="Phoenix Suns" data-rank="8" data-mp="75.1" data-pts="78.7" data-gs="76.3" data-ws="77.2" data-cs="76.9"><div class="rgn-rank-pill">8</div><div class="rgn-name-label"><strong>Phoenix Suns</strong></div><div class="rgn-track"><span class="rgn-fill" style="width:76.9%" data-rgn-target="76.9"></span></div><div class="rgn-score">76.9%</div></div>
+          <div class="rgn-bar-row " data-team="Indiana Pacers" data-rank="9" data-mp="72.2" data-pts="76.3" data-gs="82.2" data-ws="75.5" data-cs="76.6"><div class="rgn-rank-pill">9</div><div class="rgn-name-label"><strong>Indiana Pacers</strong></div><div class="rgn-track"><span class="rgn-fill" style="width:76.6%" data-rgn-target="76.6"></span></div><div class="rgn-score">76.6%</div></div>
+          <div class="rgn-bar-row " data-team="Oklahoma City Thunder" data-rank="10" data-mp="70.8" data-pts="75.2" data-gs="74.9" data-ws="79.8" data-cs="75.2"><div class="rgn-rank-pill">10</div><div class="rgn-name-label"><strong>Oklahoma City Thunder</strong></div><div class="rgn-track"><span class="rgn-fill" style="width:75.2%" data-rgn-target="75.2"></span></div><div class="rgn-score">75.2%</div></div>
+          <div class="rgn-bar-row " data-team="Boston Celtics" data-rank="11" data-mp="75.4" data-pts="66.3" data-gs="79.5" data-ws="78.4" data-cs="74.9"><div class="rgn-rank-pill">11</div><div class="rgn-name-label"><strong>Boston Celtics</strong></div><div class="rgn-track"><span class="rgn-fill" style="width:74.9%" data-rgn-target="74.9"></span></div><div class="rgn-score">74.9%</div></div>
+          <div class="rgn-bar-row " data-team="Atlanta Hawks" data-rank="12" data-mp="71.0" data-pts="74.0" data-gs="79.8" data-ws="74.6" data-cs="74.8"><div class="rgn-rank-pill">12</div><div class="rgn-name-label"><strong>Atlanta Hawks</strong></div><div class="rgn-track"><span class="rgn-fill" style="width:74.8%" data-rgn-target="74.8"></span></div><div class="rgn-score">74.8%</div></div>
+          <div class="rgn-bar-row " data-team="Washington Wizards" data-rank="13" data-mp="73.3" data-pts="72.1" data-gs="84.1" data-ws="68.5" data-cs="74.5"><div class="rgn-rank-pill">13</div><div class="rgn-name-label"><strong>Washington Wizards</strong></div><div class="rgn-track"><span class="rgn-fill" style="width:74.5%" data-rgn-target="74.5"></span></div><div class="rgn-score">74.5%</div></div>
+          <div class="rgn-bar-row " data-team="Cleveland Cavaliers" data-rank="14" data-mp="68.5" data-pts="75.8" data-gs="73.9" data-ws="78.7" data-cs="74.2"><div class="rgn-rank-pill">14</div><div class="rgn-name-label"><strong>Cleveland Cavaliers</strong></div><div class="rgn-track"><span class="rgn-fill" style="width:74.2%" data-rgn-target="74.2"></span></div><div class="rgn-score">74.2%</div></div>
+          <div class="rgn-bar-row " data-team="Utah Jazz" data-rank="15" data-mp="65.2" data-pts="75.0" data-gs="78.5" data-ws="70.6" data-cs="72.3"><div class="rgn-rank-pill">15</div><div class="rgn-name-label"><strong>Utah Jazz</strong></div><div class="rgn-track"><span class="rgn-fill" style="width:72.3%" data-rgn-target="72.3"></span></div><div class="rgn-score">72.3%</div></div>
+          <div class="rgn-bar-row " data-team="Detroit Pistons" data-rank="16" data-mp="65.1" data-pts="68.9" data-gs="78.5" data-ws="74.0" data-cs="71.6"><div class="rgn-rank-pill">16</div><div class="rgn-name-label"><strong>Detroit Pistons</strong></div><div class="rgn-track"><span class="rgn-fill" style="width:71.6%" data-rgn-target="71.6"></span></div><div class="rgn-score">71.6%</div></div>
+          <div class="rgn-bar-row " data-team="Denver Nuggets" data-rank="17" data-mp="61.1" data-pts="65.4" data-gs="81.5" data-ws="73.5" data-cs="70.4"><div class="rgn-rank-pill">17</div><div class="rgn-name-label"><strong>Denver Nuggets</strong></div><div class="rgn-track"><span class="rgn-fill" style="width:70.4%" data-rgn-target="70.4"></span></div><div class="rgn-score">70.4%</div></div>
+          <div class="rgn-bar-row " data-team="Minnesota Timberwolves" data-rank="18" data-mp="65.8" data-pts="65.4" data-gs="75.4" data-ws="70.7" data-cs="69.3"><div class="rgn-rank-pill">18</div><div class="rgn-name-label"><strong>Minnesota Timberwolves</strong></div><div class="rgn-track"><span class="rgn-fill" style="width:69.3%" data-rgn-target="69.3"></span></div><div class="rgn-score">69.3%</div></div>
+          <div class="rgn-bar-row " data-team="Toronto Raptors" data-rank="19" data-mp="66.3" data-pts="64.2" data-gs="74.6" data-ws="71.4" data-cs="69.1"><div class="rgn-rank-pill">19</div><div class="rgn-name-label"><strong>Toronto Raptors</strong></div><div class="rgn-track"><span class="rgn-fill" style="width:69.1%" data-rgn-target="69.1"></span></div><div class="rgn-score">69.1%</div></div>
+          <div class="rgn-bar-row " data-team="Brooklyn Nets" data-rank="20" data-mp="64.9" data-pts="65.3" data-gs="72.7" data-ws="53.0" data-cs="64.0"><div class="rgn-rank-pill">20</div><div class="rgn-name-label"><strong>Brooklyn Nets</strong></div><div class="rgn-track"><span class="rgn-fill" style="width:64.0%" data-rgn-target="64.0"></span></div><div class="rgn-score">64.0%</div></div>
+          <div class="rgn-bar-row " data-team="Dallas Mavericks" data-rank="21" data-mp="56.4" data-pts="56.5" data-gs="72.9" data-ws="65.4" data-cs="62.8"><div class="rgn-rank-pill">21</div><div class="rgn-name-label"><strong>Dallas Mavericks</strong></div><div class="rgn-track"><span class="rgn-fill" style="width:62.8%" data-rgn-target="62.8"></span></div><div class="rgn-score">62.8%</div></div>
+          <div class="rgn-bar-row " data-team="Philadelphia 76ers" data-rank="22" data-mp="56.1" data-pts="60.5" data-gs="67.8" data-ws="64.9" data-cs="62.3"><div class="rgn-rank-pill">22</div><div class="rgn-name-label"><strong>Philadelphia 76ers</strong></div><div class="rgn-track"><span class="rgn-fill" style="width:62.3%" data-rgn-target="62.3"></span></div><div class="rgn-score">62.3%</div></div>
+          <div class="rgn-bar-row " data-team="Milwaukee Bucks" data-rank="23" data-mp="61.4" data-pts="57.1" data-gs="75.9" data-ws="53.2" data-cs="61.9"><div class="rgn-rank-pill">23</div><div class="rgn-name-label"><strong>Milwaukee Bucks</strong></div><div class="rgn-track"><span class="rgn-fill" style="width:61.9%" data-rgn-target="61.9"></span></div><div class="rgn-score">61.9%</div></div>
+          <div class="rgn-bar-row " data-team="Miami Heat" data-rank="24" data-mp="61.5" data-pts="56.6" data-gs="69.0" data-ws="58.8" data-cs="61.5"><div class="rgn-rank-pill">24</div><div class="rgn-name-label"><strong>Miami Heat</strong></div><div class="rgn-track"><span class="rgn-fill" style="width:61.5%" data-rgn-target="61.5"></span></div><div class="rgn-score">61.5%</div></div>
+          <div class="rgn-bar-row " data-team="Charlotte Hornets" data-rank="25" data-mp="60.7" data-pts="56.3" data-gs="60.2" data-ws="65.2" data-cs="60.6"><div class="rgn-rank-pill">25</div><div class="rgn-name-label"><strong>Charlotte Hornets</strong></div><div class="rgn-track"><span class="rgn-fill" style="width:60.6%" data-rgn-target="60.6"></span></div><div class="rgn-score">60.6%</div></div>
+          <div class="rgn-bar-row is-low" data-team="Memphis Grizzlies" data-rank="26" data-mp="52.0" data-pts="54.7" data-gs="61.0" data-ws="65.5" data-cs="58.3"><div class="rgn-rank-pill">26</div><div class="rgn-name-label"><strong>Memphis Grizzlies</strong></div><div class="rgn-track"><span class="rgn-fill" style="width:58.3%" data-rgn-target="58.3"></span></div><div class="rgn-score">58.3%</div></div>
+          <div class="rgn-bar-row is-low" data-team="Chicago Bulls" data-rank="27" data-mp="54.7" data-pts="53.8" data-gs="65.9" data-ws="58.4" data-cs="58.2"><div class="rgn-rank-pill">27</div><div class="rgn-name-label"><strong>Chicago Bulls</strong></div><div class="rgn-track"><span class="rgn-fill" style="width:58.2%" data-rgn-target="58.2"></span></div><div class="rgn-score">58.2%</div></div>
+          <div class="rgn-bar-row is-low" data-team="Sacramento Kings" data-rank="28" data-mp="57.4" data-pts="55.4" data-gs="55.6" data-ws="60.8" data-cs="57.3"><div class="rgn-rank-pill">28</div><div class="rgn-name-label"><strong>Sacramento Kings</strong></div><div class="rgn-track"><span class="rgn-fill" style="width:57.3%" data-rgn-target="57.3"></span></div><div class="rgn-score">57.3%</div></div>
+          <div class="rgn-bar-row is-low" data-team="Los Angeles Clippers" data-rank="29" data-mp="49.2" data-pts="39.8" data-gs="47.1" data-ws="39.8" data-cs="44.0"><div class="rgn-rank-pill">29</div><div class="rgn-name-label"><strong>Los Angeles Clippers</strong></div><div class="rgn-track"><span class="rgn-fill" style="width:44.0%" data-rgn-target="44.0"></span></div><div class="rgn-score">44.0%</div></div>
+          <div class="rgn-bar-row is-low" data-team="Los Angeles Lakers" data-rank="30" data-mp="39.6" data-pts="46.8" data-gs="38.0" data-ws="45.5" data-cs="42.5"><div class="rgn-rank-pill">30</div><div class="rgn-name-label"><strong>Los Angeles Lakers</strong></div><div class="rgn-track"><span class="rgn-fill" style="width:42.5%" data-rgn-target="42.5"></span></div><div class="rgn-score">42.5%</div></div>
+        </div>
+      </div>
+
+      <div class="rgn-tab-panel" data-rgn-tab-panel="table">
+        <div class="rgn-table-tools">
+          <input class="rgn-search" data-rgn-search="rgn-table" placeholder="Search team" type="search" aria-label="Search team"/>
+          <span class="rgn-table-count" data-rgn-count="rgn-table"></span>
+        </div>
+        <div class="rgn-table-wrap">
+        <table class="rgn-data-table" id="rgn-table">
+          <thead><tr><th data-rgn-sort="number">Rank</th><th data-rgn-sort="text">Team</th><th data-rgn-sort="number">Minutes</th><th data-rgn-sort="number">Points</th><th data-rgn-sort="number">Starts</th><th data-rgn-sort="number">Win shares</th><th data-rgn-sort="number">Roster continuity</th></tr></thead>
+          <tbody>
+            <tr data-search="san antonio spurs"><td class="rgn-rank-cell" data-value="1">1</td><td class="rgn-team-cell" data-value="San Antonio Spurs">San Antonio Spurs</td><td class="rgn-heat" data-value="93.8" style="background:rgba(11,120,200,0.311)">93.8%</td><td class="rgn-heat" data-value="96.0" style="background:rgba(11,120,200,0.322)">96.0%</td><td class="rgn-heat" data-value="99.5" style="background:rgba(11,120,200,0.338)">99.5%</td><td class="rgn-heat" data-value="95.7" style="background:rgba(11,120,200,0.320)">95.7%</td><td class="rgn-pct-cell" data-value="96.2">96.2%</td></tr>
+            <tr data-search="orlando magic"><td class="rgn-rank-cell" data-value="2">2</td><td class="rgn-team-cell" data-value="Orlando Magic">Orlando Magic</td><td class="rgn-heat" data-value="90.4" style="background:rgba(11,120,200,0.296)">90.4%</td><td class="rgn-heat" data-value="92.6" style="background:rgba(11,120,200,0.306)">92.6%</td><td class="rgn-heat" data-value="97.8" style="background:rgba(11,120,200,0.330)">97.8%</td><td class="rgn-heat" data-value="92.2" style="background:rgba(11,120,200,0.304)">92.2%</td><td class="rgn-pct-cell" data-value="93.3">93.3%</td></tr>
+            <tr data-search="new orleans pelicans"><td class="rgn-rank-cell" data-value="3">3</td><td class="rgn-team-cell" data-value="New Orleans Pelicans">New Orleans Pelicans</td><td class="rgn-heat" data-value="84.6" style="background:rgba(11,120,200,0.269)">84.6%</td><td class="rgn-heat" data-value="89.6" style="background:rgba(11,120,200,0.292)">89.6%</td><td class="rgn-heat" data-value="96.6" style="background:rgba(11,120,200,0.324)">96.6%</td><td class="rgn-heat" data-value="93.8" style="background:rgba(11,120,200,0.311)">93.8%</td><td class="rgn-pct-cell" data-value="91.1">91.1%</td></tr>
+            <tr data-search="new york knicks"><td class="rgn-rank-cell" data-value="4">4</td><td class="rgn-team-cell" data-value="New York Knicks">New York Knicks</td><td class="rgn-heat" data-value="88.5" style="background:rgba(11,120,200,0.287)">88.5%</td><td class="rgn-heat" data-value="93.4" style="background:rgba(11,120,200,0.310)">93.4%</td><td class="rgn-heat" data-value="94.9" style="background:rgba(11,120,200,0.316)">94.9%</td><td class="rgn-heat" data-value="86.0" style="background:rgba(11,120,200,0.275)">86.0%</td><td class="rgn-pct-cell" data-value="90.7">90.7%</td></tr>
+            <tr data-search="houston rockets"><td class="rgn-rank-cell" data-value="5">5</td><td class="rgn-team-cell" data-value="Houston Rockets">Houston Rockets</td><td class="rgn-heat" data-value="84.1" style="background:rgba(11,120,200,0.267)">84.1%</td><td class="rgn-heat" data-value="90.1" style="background:rgba(11,120,200,0.294)">90.1%</td><td class="rgn-heat" data-value="91.7" style="background:rgba(11,120,200,0.302)">91.7%</td><td class="rgn-heat" data-value="90.3" style="background:rgba(11,120,200,0.295)">90.3%</td><td class="rgn-pct-cell" data-value="89.1">89.1%</td></tr>
+            <tr data-search="golden state warriors"><td class="rgn-rank-cell" data-value="6">6</td><td class="rgn-team-cell" data-value="Golden State Warriors">Golden State Warriors</td><td class="rgn-heat" data-value="77.2" style="background:rgba(11,120,200,0.235)">77.2%</td><td class="rgn-heat" data-value="79.2" style="background:rgba(11,120,200,0.244)">79.2%</td><td class="rgn-heat" data-value="83.4" style="background:rgba(11,120,200,0.263)">83.4%</td><td class="rgn-heat" data-value="83.7" style="background:rgba(11,120,200,0.265)">83.7%</td><td class="rgn-pct-cell" data-value="80.9">80.9%</td></tr>
+            <tr data-search="portland trail blazers"><td class="rgn-rank-cell" data-value="7">7</td><td class="rgn-team-cell" data-value="Portland Trail Blazers">Portland Trail Blazers</td><td class="rgn-heat" data-value="70.6" style="background:rgba(11,120,200,0.204)">70.6%</td><td class="rgn-heat" data-value="73.9" style="background:rgba(11,120,200,0.220)">73.9%</td><td class="rgn-heat" data-value="86.8" style="background:rgba(11,120,200,0.279)">86.8%</td><td class="rgn-heat" data-value="78.5" style="background:rgba(11,120,200,0.241)">78.5%</td><td class="rgn-pct-cell" data-value="77.4">77.4%</td></tr>
+            <tr data-search="phoenix suns"><td class="rgn-rank-cell" data-value="8">8</td><td class="rgn-team-cell" data-value="Phoenix Suns">Phoenix Suns</td><td class="rgn-heat" data-value="75.1" style="background:rgba(11,120,200,0.225)">75.1%</td><td class="rgn-heat" data-value="78.7" style="background:rgba(11,120,200,0.242)">78.7%</td><td class="rgn-heat" data-value="76.3" style="background:rgba(11,120,200,0.231)">76.3%</td><td class="rgn-heat" data-value="77.2" style="background:rgba(11,120,200,0.235)">77.2%</td><td class="rgn-pct-cell" data-value="76.9">76.9%</td></tr>
+            <tr data-search="indiana pacers"><td class="rgn-rank-cell" data-value="9">9</td><td class="rgn-team-cell" data-value="Indiana Pacers">Indiana Pacers</td><td class="rgn-heat" data-value="72.2" style="background:rgba(11,120,200,0.212)">72.2%</td><td class="rgn-heat" data-value="76.3" style="background:rgba(11,120,200,0.231)">76.3%</td><td class="rgn-heat" data-value="82.2" style="background:rgba(11,120,200,0.258)">82.2%</td><td class="rgn-heat" data-value="75.5" style="background:rgba(11,120,200,0.227)">75.5%</td><td class="rgn-pct-cell" data-value="76.6">76.6%</td></tr>
+            <tr data-search="oklahoma city thunder"><td class="rgn-rank-cell" data-value="10">10</td><td class="rgn-team-cell" data-value="Oklahoma City Thunder">Oklahoma City Thunder</td><td class="rgn-heat" data-value="70.8" style="background:rgba(11,120,200,0.205)">70.8%</td><td class="rgn-heat" data-value="75.2" style="background:rgba(11,120,200,0.226)">75.2%</td><td class="rgn-heat" data-value="74.9" style="background:rgba(11,120,200,0.224)">74.9%</td><td class="rgn-heat" data-value="79.8" style="background:rgba(11,120,200,0.247)">79.8%</td><td class="rgn-pct-cell" data-value="75.2">75.2%</td></tr>
+            <tr data-search="boston celtics"><td class="rgn-rank-cell" data-value="11">11</td><td class="rgn-team-cell" data-value="Boston Celtics">Boston Celtics</td><td class="rgn-heat" data-value="75.4" style="background:rgba(11,120,200,0.226)">75.4%</td><td class="rgn-heat" data-value="66.3" style="background:rgba(11,120,200,0.184)">66.3%</td><td class="rgn-heat" data-value="79.5" style="background:rgba(11,120,200,0.245)">79.5%</td><td class="rgn-heat" data-value="78.4" style="background:rgba(11,120,200,0.240)">78.4%</td><td class="rgn-pct-cell" data-value="74.9">74.9%</td></tr>
+            <tr data-search="atlanta hawks"><td class="rgn-rank-cell" data-value="12">12</td><td class="rgn-team-cell" data-value="Atlanta Hawks">Atlanta Hawks</td><td class="rgn-heat" data-value="71.0" style="background:rgba(11,120,200,0.206)">71.0%</td><td class="rgn-heat" data-value="74.0" style="background:rgba(11,120,200,0.220)">74.0%</td><td class="rgn-heat" data-value="79.8" style="background:rgba(11,120,200,0.247)">79.8%</td><td class="rgn-heat" data-value="74.6" style="background:rgba(11,120,200,0.223)">74.6%</td><td class="rgn-pct-cell" data-value="74.8">74.8%</td></tr>
+            <tr data-search="washington wizards"><td class="rgn-rank-cell" data-value="13">13</td><td class="rgn-team-cell" data-value="Washington Wizards">Washington Wizards</td><td class="rgn-heat" data-value="73.3" style="background:rgba(11,120,200,0.217)">73.3%</td><td class="rgn-heat" data-value="72.1" style="background:rgba(11,120,200,0.211)">72.1%</td><td class="rgn-heat" data-value="84.1" style="background:rgba(11,120,200,0.267)">84.1%</td><td class="rgn-heat" data-value="68.5" style="background:rgba(11,120,200,0.195)">68.5%</td><td class="rgn-pct-cell" data-value="74.5">74.5%</td></tr>
+            <tr data-search="cleveland cavaliers"><td class="rgn-rank-cell" data-value="14">14</td><td class="rgn-team-cell" data-value="Cleveland Cavaliers">Cleveland Cavaliers</td><td class="rgn-heat" data-value="68.5" style="background:rgba(11,120,200,0.195)">68.5%</td><td class="rgn-heat" data-value="75.8" style="background:rgba(11,120,200,0.228)">75.8%</td><td class="rgn-heat" data-value="73.9" style="background:rgba(11,120,200,0.220)">73.9%</td><td class="rgn-heat" data-value="78.7" style="background:rgba(11,120,200,0.242)">78.7%</td><td class="rgn-pct-cell" data-value="74.2">74.2%</td></tr>
+            <tr data-search="utah jazz"><td class="rgn-rank-cell" data-value="15">15</td><td class="rgn-team-cell" data-value="Utah Jazz">Utah Jazz</td><td class="rgn-heat" data-value="65.2" style="background:rgba(11,120,200,0.179)">65.2%</td><td class="rgn-heat" data-value="75.0" style="background:rgba(11,120,200,0.225)">75.0%</td><td class="rgn-heat" data-value="78.5" style="background:rgba(11,120,200,0.241)">78.5%</td><td class="rgn-heat" data-value="70.6" style="background:rgba(11,120,200,0.204)">70.6%</td><td class="rgn-pct-cell" data-value="72.3">72.3%</td></tr>
+            <tr data-search="detroit pistons"><td class="rgn-rank-cell" data-value="16">16</td><td class="rgn-team-cell" data-value="Detroit Pistons">Detroit Pistons</td><td class="rgn-heat" data-value="65.1" style="background:rgba(11,120,200,0.179)">65.1%</td><td class="rgn-heat" data-value="68.9" style="background:rgba(11,120,200,0.196)">68.9%</td><td class="rgn-heat" data-value="78.5" style="background:rgba(11,120,200,0.241)">78.5%</td><td class="rgn-heat" data-value="74.0" style="background:rgba(11,120,200,0.220)">74.0%</td><td class="rgn-pct-cell" data-value="71.6">71.6%</td></tr>
+            <tr data-search="denver nuggets"><td class="rgn-rank-cell" data-value="17">17</td><td class="rgn-team-cell" data-value="Denver Nuggets">Denver Nuggets</td><td class="rgn-heat" data-value="61.1" style="background:rgba(11,120,200,0.160)">61.1%</td><td class="rgn-heat" data-value="65.4" style="background:rgba(11,120,200,0.180)">65.4%</td><td class="rgn-heat" data-value="81.5" style="background:rgba(11,120,200,0.255)">81.5%</td><td class="rgn-heat" data-value="73.5" style="background:rgba(11,120,200,0.218)">73.5%</td><td class="rgn-pct-cell" data-value="70.4">70.4%</td></tr>
+            <tr data-search="minnesota timberwolves"><td class="rgn-rank-cell" data-value="18">18</td><td class="rgn-team-cell" data-value="Minnesota Timberwolves">Minnesota Timberwolves</td><td class="rgn-heat" data-value="65.8" style="background:rgba(11,120,200,0.182)">65.8%</td><td class="rgn-heat" data-value="65.4" style="background:rgba(11,120,200,0.180)">65.4%</td><td class="rgn-heat" data-value="75.4" style="background:rgba(11,120,200,0.226)">75.4%</td><td class="rgn-heat" data-value="70.7" style="background:rgba(11,120,200,0.205)">70.7%</td><td class="rgn-pct-cell" data-value="69.3">69.3%</td></tr>
+            <tr data-search="toronto raptors"><td class="rgn-rank-cell" data-value="19">19</td><td class="rgn-team-cell" data-value="Toronto Raptors">Toronto Raptors</td><td class="rgn-heat" data-value="66.3" style="background:rgba(11,120,200,0.184)">66.3%</td><td class="rgn-heat" data-value="64.2" style="background:rgba(11,120,200,0.175)">64.2%</td><td class="rgn-heat" data-value="74.6" style="background:rgba(11,120,200,0.223)">74.6%</td><td class="rgn-heat" data-value="71.4" style="background:rgba(11,120,200,0.208)">71.4%</td><td class="rgn-pct-cell" data-value="69.1">69.1%</td></tr>
+            <tr data-search="brooklyn nets"><td class="rgn-rank-cell" data-value="20">20</td><td class="rgn-team-cell" data-value="Brooklyn Nets">Brooklyn Nets</td><td class="rgn-heat" data-value="64.9" style="background:rgba(11,120,200,0.178)">64.9%</td><td class="rgn-heat" data-value="65.3" style="background:rgba(11,120,200,0.180)">65.3%</td><td class="rgn-heat" data-value="72.7" style="background:rgba(11,120,200,0.214)">72.7%</td><td class="rgn-heat" data-value="53.0" style="background:rgba(224,102,43,0.184)">53.0%</td><td class="rgn-pct-cell" data-value="64.0">64.0%</td></tr>
+            <tr data-search="dallas mavericks"><td class="rgn-rank-cell" data-value="21">21</td><td class="rgn-team-cell" data-value="Dallas Mavericks">Dallas Mavericks</td><td class="rgn-heat" data-value="56.4" style="background:rgba(224,102,43,0.143)">56.4%</td><td class="rgn-heat" data-value="56.5" style="background:rgba(224,102,43,0.142)">56.5%</td><td class="rgn-heat" data-value="72.9" style="background:rgba(11,120,200,0.215)">72.9%</td><td class="rgn-heat" data-value="65.4" style="background:rgba(11,120,200,0.180)">65.4%</td><td class="rgn-pct-cell" data-value="62.8">62.8%</td></tr>
+            <tr data-search="philadelphia 76ers"><td class="rgn-rank-cell" data-value="22">22</td><td class="rgn-team-cell" data-value="Philadelphia 76ers">Philadelphia 76ers</td><td class="rgn-heat" data-value="56.1" style="background:rgba(224,102,43,0.147)">56.1%</td><td class="rgn-heat" data-value="60.5" style="background:rgba(11,120,200,0.158)">60.5%</td><td class="rgn-heat" data-value="67.8" style="background:rgba(11,120,200,0.191)">67.8%</td><td class="rgn-heat" data-value="64.9" style="background:rgba(11,120,200,0.178)">64.9%</td><td class="rgn-pct-cell" data-value="62.3">62.3%</td></tr>
+            <tr data-search="milwaukee bucks"><td class="rgn-rank-cell" data-value="23">23</td><td class="rgn-team-cell" data-value="Milwaukee Bucks">Milwaukee Bucks</td><td class="rgn-heat" data-value="61.4" style="background:rgba(11,120,200,0.162)">61.4%</td><td class="rgn-heat" data-value="57.1" style="background:rgba(224,102,43,0.135)">57.1%</td><td class="rgn-heat" data-value="75.9" style="background:rgba(11,120,200,0.229)">75.9%</td><td class="rgn-heat" data-value="53.2" style="background:rgba(224,102,43,0.182)">53.2%</td><td class="rgn-pct-cell" data-value="61.9">61.9%</td></tr>
+            <tr data-search="miami heat"><td class="rgn-rank-cell" data-value="24">24</td><td class="rgn-team-cell" data-value="Miami Heat">Miami Heat</td><td class="rgn-heat" data-value="61.5" style="background:rgba(11,120,200,0.162)">61.5%</td><td class="rgn-heat" data-value="56.6" style="background:rgba(224,102,43,0.141)">56.6%</td><td class="rgn-heat" data-value="69.0" style="background:rgba(11,120,200,0.197)">69.0%</td><td class="rgn-heat" data-value="58.8" style="background:rgba(224,102,43,0.114)">58.8%</td><td class="rgn-pct-cell" data-value="61.5">61.5%</td></tr>
+            <tr data-search="charlotte hornets"><td class="rgn-rank-cell" data-value="25">25</td><td class="rgn-team-cell" data-value="Charlotte Hornets">Charlotte Hornets</td><td class="rgn-heat" data-value="60.7" style="background:rgba(11,120,200,0.159)">60.7%</td><td class="rgn-heat" data-value="56.3" style="background:rgba(224,102,43,0.144)">56.3%</td><td class="rgn-heat" data-value="60.2" style="background:rgba(11,120,200,0.156)">60.2%</td><td class="rgn-heat" data-value="65.2" style="background:rgba(11,120,200,0.179)">65.2%</td><td class="rgn-pct-cell" data-value="60.6">60.6%</td></tr>
+            <tr data-search="memphis grizzlies"><td class="rgn-rank-cell" data-value="26">26</td><td class="rgn-team-cell" data-value="Memphis Grizzlies">Memphis Grizzlies</td><td class="rgn-heat" data-value="52.0" style="background:rgba(224,102,43,0.196)">52.0%</td><td class="rgn-heat" data-value="54.7" style="background:rgba(224,102,43,0.164)">54.7%</td><td class="rgn-heat" data-value="61.0" style="background:rgba(11,120,200,0.160)">61.0%</td><td class="rgn-heat" data-value="65.5" style="background:rgba(11,120,200,0.181)">65.5%</td><td class="rgn-pct-cell" data-value="58.3">58.3%</td></tr>
+            <tr data-search="chicago bulls"><td class="rgn-rank-cell" data-value="27">27</td><td class="rgn-team-cell" data-value="Chicago Bulls">Chicago Bulls</td><td class="rgn-heat" data-value="54.7" style="background:rgba(224,102,43,0.164)">54.7%</td><td class="rgn-heat" data-value="53.8" style="background:rgba(224,102,43,0.174)">53.8%</td><td class="rgn-heat" data-value="65.9" style="background:rgba(11,120,200,0.183)">65.9%</td><td class="rgn-heat" data-value="58.4" style="background:rgba(224,102,43,0.119)">58.4%</td><td class="rgn-pct-cell" data-value="58.2">58.2%</td></tr>
+            <tr data-search="sacramento kings"><td class="rgn-rank-cell" data-value="28">28</td><td class="rgn-team-cell" data-value="Sacramento Kings">Sacramento Kings</td><td class="rgn-heat" data-value="57.4" style="background:rgba(224,102,43,0.131)">57.4%</td><td class="rgn-heat" data-value="55.4" style="background:rgba(224,102,43,0.155)">55.4%</td><td class="rgn-heat" data-value="55.6" style="background:rgba(224,102,43,0.153)">55.6%</td><td class="rgn-heat" data-value="60.8" style="background:rgba(11,120,200,0.159)">60.8%</td><td class="rgn-pct-cell" data-value="57.3">57.3%</td></tr>
+            <tr data-search="los angeles clippers"><td class="rgn-rank-cell" data-value="29">29</td><td class="rgn-team-cell" data-value="Los Angeles Clippers">Los Angeles Clippers</td><td class="rgn-heat" data-value="49.2" style="background:rgba(224,102,43,0.230)">49.2%</td><td class="rgn-heat" data-value="39.8" style="background:rgba(224,102,43,0.342)">39.8%</td><td class="rgn-heat" data-value="47.1" style="background:rgba(224,102,43,0.255)">47.1%</td><td class="rgn-heat" data-value="39.8" style="background:rgba(224,102,43,0.342)">39.8%</td><td class="rgn-pct-cell" data-value="44.0">44.0%</td></tr>
+            <tr data-search="los angeles lakers"><td class="rgn-rank-cell" data-value="30">30</td><td class="rgn-team-cell" data-value="Los Angeles Lakers">Los Angeles Lakers</td><td class="rgn-heat" data-value="39.6" style="background:rgba(224,102,43,0.345)">39.6%</td><td class="rgn-heat" data-value="46.8" style="background:rgba(224,102,43,0.258)">46.8%</td><td class="rgn-heat" data-value="38.0" style="background:rgba(224,102,43,0.364)">38.0%</td><td class="rgn-heat" data-value="45.5" style="background:rgba(224,102,43,0.274)">45.5%</td><td class="rgn-pct-cell" data-value="42.5">42.5%</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<p class="rgn-source"><strong>Methodology:</strong> Returning share is the portion of a team's 2025-26 minutes, points, games started and win shares (counted only with that team) earned by players who are on the same team's official 2026-27 roster. Roster continuity is the average of the four shares, weighted equally. Stats are from Basketball-Reference. Rosters are from NBA.com, collected Oct. 20, 2026. The score measures who left, not who arrived, and rosters can change after Oct. 20. Players were matched by name.</p>
+
+<script>
+(function(){
+  var root = document.getElementById('rg-nba-roster-continuity');
+  if(!root) return;
+  function qsa(sel, ctx){ return Array.prototype.slice.call((ctx||root).querySelectorAll(sel)); }
+  function textOf(el){ return ((el && (el.innerText||el.textContent)) || '').replace(/\s+/g,' ').trim(); }
+
+  var bars = document.getElementById('rgn-bars');
+  var currentMetric = 'cs';
+  function bandClass(v){ return v>=80 ? 'is-high' : (v<60 ? 'is-low' : ''); }
+
+  function resetBars(){
+    qsa('.rgn-fill', bars).forEach(function(f){ f.style.transition='none'; f.style.width='0%'; });
+    qsa('.rgn-score', bars).forEach(function(s){ s.textContent='0.0%'; });
+  }
+  function animateBars(){
+    qsa('.rgn-bar-row', bars).forEach(function(row, i){
+      var fill = row.querySelector('.rgn-fill'), score = row.querySelector('.rgn-score');
+      var target = parseFloat(fill.getAttribute('data-rgn-target'));
+      fill.offsetWidth;
+      window.setTimeout(function(){
+        fill.style.transition = 'width 1100ms cubic-bezier(.16,.84,.24,1)';
+        fill.style.width = target + '%';
+      }, i*25 + 20);
+      window.setTimeout(function(){
+        var start=null, dur=1000;
+        function tick(ts){
+          if(start===null) start=ts;
+          var p=Math.min((ts-start)/dur,1), e=1-Math.pow(1-p,3);
+          score.textContent=(target*e).toFixed(1)+'%';
+          if(p<1) window.requestAnimationFrame(tick); else score.textContent=target.toFixed(1)+'%';
+        }
+        window.requestAnimationFrame(tick);
+      }, i*25 + 20);
+    });
+  }
+
+  function applyMetric(metric, animate){
+    currentMetric = metric;
+    var rows = qsa('.rgn-bar-row', bars);
+    rows.sort(function(a,b){
+      var av=parseFloat(a.getAttribute('data-'+metric)), bv=parseFloat(b.getAttribute('data-'+metric));
+      if(bv!==av) return bv-av;
+      return parseFloat(a.getAttribute('data-rank'))-parseFloat(b.getAttribute('data-rank'));
+    });
+    var prev=null, prevRank=0;
+    rows.forEach(function(row, i){
+      var v=parseFloat(row.getAttribute('data-'+metric));
+      var rank = (metric==='cs') ? parseInt(row.getAttribute('data-rank'),10) : (prev!==null && v===prev ? prevRank : i+1);
+      prev=v; prevRank=rank;
+      row.querySelector('.rgn-rank-pill').textContent = rank;
+      var fill=row.querySelector('.rgn-fill');
+      fill.setAttribute('data-rgn-target', v);
+      row.classList.remove('is-high','is-low');
+      var c=bandClass(v); if(c) row.classList.add(c);
+      bars.appendChild(row);
+      if(!animate){ fill.style.transition='none'; fill.style.width=v+'%'; row.querySelector('.rgn-score').textContent=v.toFixed(1)+'%'; }
+    });
+    if(animate){ resetBars(); window.setTimeout(animateBars, 40); }
+  }
+
+  resetBars();
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ animateBars(); obs.unobserve(e.target); } });
+    }, {threshold:.15});
+    obs.observe(bars);
+  } else { window.setTimeout(animateBars, 300); }
+
+  qsa('[data-rgn-metric]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      qsa('[data-rgn-metric]').forEach(function(b){ b.classList.toggle('is-active', b===btn); });
+      applyMetric(btn.getAttribute('data-rgn-metric'), true);
+    });
+  });
+
+  qsa('[data-rgn-tab-target]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var view=btn.getAttribute('data-rgn-tab-target');
+      qsa('[data-rgn-tab-target]').forEach(function(o){ o.classList.toggle('is-active', o===btn); });
+      qsa('[data-rgn-tab-panel]').forEach(function(p){ p.classList.toggle('is-active', p.getAttribute('data-rgn-tab-panel')===view); });
+      if(view==='chart'){ resetBars(); window.setTimeout(animateBars, 60); }
+    });
+  });
+
+  function updateCount(id){
+    var t=document.getElementById(id); if(!t) return;
+    var rows=qsa('tbody tr', t), shown=rows.filter(function(r){return !r.hidden;}).length;
+    qsa('[data-rgn-count="'+id+'"]').forEach(function(el){ el.textContent = shown+' of '+rows.length+' shown'; });
+  }
+  qsa('[data-rgn-search]').forEach(function(input){
+    var id=input.getAttribute('data-rgn-search');
+    input.addEventListener('input', function(){
+      var q=input.value.toLowerCase();
+      qsa('tbody tr', document.getElementById(id)).forEach(function(row){
+        row.hidden = !!q && (row.getAttribute('data-search')||'').indexOf(q)===-1;
+      });
+      updateCount(id);
+    });
+    updateCount(id);
+  });
+
+  qsa('th[data-rgn-sort]').forEach(function(th){
+    th.addEventListener('click', function(){
+      var table=th.closest('table'), tbody=table.tBodies[0];
+      var idx=Array.prototype.indexOf.call(th.parentNode.children, th);
+      var type=th.getAttribute('data-rgn-sort');
+      var dir = th.getAttribute('data-dir')==='desc' ? 'asc' : (th.getAttribute('data-dir')==='asc' ? 'desc' : (type==='text' ? 'asc' : (idx===0 ? 'asc' : 'desc')));
+      qsa('th[data-rgn-sort]', table).forEach(function(h){ h.removeAttribute('data-dir'); });
+      th.setAttribute('data-dir', dir);
+      var rows=qsa('tr', tbody);
+      rows.sort(function(a,b){
+        var av=a.children[idx].getAttribute('data-value'), bv=b.children[idx].getAttribute('data-value');
+        if(type==='number'){ av=parseFloat(av); bv=parseFloat(bv); } else { av=av.toLowerCase(); bv=bv.toLowerCase(); }
+        if(av<bv) return dir==='asc'?-1:1;
+        if(av>bv) return dir==='asc'?1:-1;
+        return 0;
+      });
+      rows.forEach(function(r){ tbody.appendChild(r); });
+    });
+  });
+
+  qsa('[data-rgn-csv]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var t=document.getElementById(btn.getAttribute('data-rgn-csv'));
+      var rows=[qsa('thead th', t).map(textOf)].concat(qsa('tbody tr', t).filter(function(r){return !r.hidden;}).map(function(r){ return qsa('td', r).map(textOf); }));
+      var csv=rows.map(function(r){ return r.map(function(c){ return '"'+String(c).replace(/"/g,'""')+'"'; }).join(','); }).join('\n');
+      var url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'}));
+      var a=document.createElement('a'); a.href=url; a.download=btn.getAttribute('data-filename')||'data.csv';
+      document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    });
+  });
+
+  qsa('[data-rgn-download]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var target=document.getElementById(btn.getAttribute('data-rgn-download'));
+      if(!target || !window.html2canvas){ alert('Image download needs html2canvas. CSV export still works.'); return; }
+      var chartPanel = target.querySelector('[data-rgn-tab-panel="chart"]');
+      var wasHidden = !chartPanel.classList.contains('is-active');
+      var tablePanel = target.querySelector('[data-rgn-tab-panel="table"]');
+      var tableWasActive = tablePanel.classList.contains('is-active');
+      if(wasHidden){ chartPanel.classList.add('is-active'); tablePanel.classList.remove('is-active'); }
+      qsa('.rgn-bar-row', target).forEach(function(row){
+        var f=row.querySelector('.rgn-fill'), v=parseFloat(f.getAttribute('data-rgn-target'));
+        f.style.transition='none'; f.style.width=v+'%'; row.querySelector('.rgn-score').textContent=v.toFixed(1)+'%';
+      });
+      html2canvas(target,{backgroundColor:'#ffffff',scale:2,useCORS:true}).then(function(canvas){
+        if(wasHidden){ chartPanel.classList.remove('is-active'); if(tableWasActive) tablePanel.classList.add('is-active'); }
+        var a=document.createElement('a'); a.download='rotogrinders-nba-roster-continuity.png'; a.href=canvas.toDataURL('image/png'); a.click();
+      });
+    });
+  });
+})();
+</script>
+</div>
